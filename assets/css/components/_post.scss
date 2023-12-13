@@ -23,15 +23,18 @@
   & > pre,
   .highlight > pre,
   .highlight > div {
+    overflow: auto;
+    word-break: break-all;
+    white-space: pre-wrap;
     border-left: 0.4em solid rgba($primary-color, .8);
     padding: 1em 1em;
   }
 
   blockquote {
-    border-left: 0.4em solid rgba($primary-color, .8);
+    border-left: 0.4em solid rgba($light-color, .8);
     margin: 1em 0em;
     padding: .5em 1em;
-    background: $darkest-color;
+    background: $gray-color;
 
     p {
       margin: .5em 0;

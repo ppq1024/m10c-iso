@@ -1,8 +1,8 @@
-name = "m10c"
+name = "m10c-iso"
 license = "MIT"
-licenselink = "https://github.com/vaga/hugo-theme-m10c/blob/master/LICENSE.md"
-description = "A minimalistic (m10c) theme for bloggers"
-homepage = "https://github.com/vaga/hugo-theme-m10c"
+licenselink = "https://github.com/Isoheptane/m10c-iso/blob/master/LICENSE.md"
+description = "A minimalistic (m10c) theme for bloggers (Modified version)"
+homepage = "https://github.com/Isoheptane/m10c-iso"
 tags = ["blog", "minimalistic", "minimal", "responsive", "dark"]
 features = [
   "minimalistic blog",

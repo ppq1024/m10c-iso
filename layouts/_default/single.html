@@ -6,17 +6,19 @@
       <div class="post-meta">
         <div>
           {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
-          {{ .PublishDate.Format "Jan 2, 2006" }}
+          {{ .PublishDate.Format "2006/01/02" }}
         </div>
+        {{ if .Params.update }}
         <div>
-          {{ partial "icon.html" (dict "ctx" $ "name" "clock") }}
-          {{ .ReadingTime }} min read
+          {{ partial "icon.html" (dict "ctx" $ "name" "refresh-cw") }}
+          {{ (time .Params.update).Format "2006/01/02" }}
         </div>
+        {{ end }}
         {{- with .Params.tags }}
         <div>
           {{ partial "icon.html" (dict "ctx" $ "name" "tag") }}
           {{- range . -}}
-            {{ with $.Site.GetPage (printf "/%s/%s" "tags" . ) }}
+            {{ with $.Site.GetPage (printf "/%s/%s" "tags" (replace . " " "-") ) }}
               <a class="tag" href="{{ .Permalink }}">{{ .Title }}</a>
             {{- end }}
           {{- end }}
@@ -29,7 +31,7 @@
       {{ .Content }}
     </div>
     <div class="post-footer">
-      {{ template "_internal/disqus.html" . }}
+    {{ partial "gitalk.html" . }}
     </div>
   </article>
 {{ end }}
