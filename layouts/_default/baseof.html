@@ -17,7 +17,8 @@
     {{ template "_internal/google_analytics.html" . }}
     {{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/opengraph.html" . }}
-    
+
+    {{ if .Page.Params.enableKatex | default false }}
     <!-- KaTeX -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
 
@@ -34,6 +35,7 @@
           ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre']
         });">
     </script>
+    {{ end }}
   </head>
   <body>
     <header class="app-header">
