@@ -15,11 +15,15 @@ $link-hover-color: #ffffff;
   }
 
   blockquote {
-    padding: 0.25em 1em;
+    padding: 0.5em 1em;
     color: $fore-color;
     // Anyway, I will add this
     background-color: #4c545c;
     border-left: 0.4rem solid $fore-color;
+
+    blockquote:first-child {
+      margin-top: 0.5em;
+    }
   }
 
   .highlight pre {
