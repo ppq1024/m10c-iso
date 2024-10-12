@@ -1,6 +1,10 @@
 {{ define "main" }}
   <article>
-    <h1>{{ .Title }}</h1>
+    <div class="content-titlebar">
+      <h1 class="content-title">{{ .Title }}</h1>
+      {{ partial "languages.html" $ }}
+    </div>
+    </div>
     <ul class="posts-list">
       {{ range where .Paginator.Pages "Type" "!=" "page" }}
         <li class="posts-list-item">

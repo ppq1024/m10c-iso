@@ -1,7 +1,10 @@
 {{ define "main" }}
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">{{ .Title }}</h1>
+      <div class="content-titlebar">
+        <h1 class ="post-title content-title">{{ .Title }}</h1>
+        {{ partial "languages.html" $ }}
+      </div>
       {{- if ne .Type "page" }}
       <div class="post-meta">
         <div>
@@ -22,14 +25,6 @@
               <a class="tag" href="{{ .Permalink }}">{{ .Title }}</a>
             {{- end }}
           {{- end }}
-        </div>
-        {{- end }}
-        {{- with .AllTranslations }}
-        <div>
-          {{ partial "icon.html" (dict "ctx" $ "name" "globe") }}
-          {{ range . }}
-          <a {{ if ne $.Site.LanguageCode .Language.LanguageCode }} href="{{ .RelPermalink }}" {{ end }} hreflang="{{ .Language.LanguageCode }}" style="margin-right: 0.25em;">{{ or .Language.LanguageName .Language.Lang }}</a>
-          {{ end }}
         </div>
         {{- end }}
       </div>

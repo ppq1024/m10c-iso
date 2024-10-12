@@ -1,6 +1,9 @@
 {{ define "main" }}
   <article>
-    <h1>{{ .Title }}</h1>
+    <div class="content-titlebar">
+      <h1 class="content-title">{{ .Title }}</h1>
+      {{ partial "languages.html" $ }}
+    </div>
     <ul class="tags-list">
       {{ range .Data.Terms.ByCount }}
         <li class="tags-list-item">
