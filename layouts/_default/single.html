@@ -24,6 +24,14 @@
           {{- end }}
         </div>
         {{- end }}
+        {{- with .AllTranslations }}
+        <div>
+          {{ partial "icon.html" (dict "ctx" $ "name" "globe") }}
+          {{ range . }}
+          <a {{ if ne $.Site.LanguageCode .Language.LanguageCode }} href="{{ .RelPermalink }}" {{ end }} hreflang="{{ .Language.LanguageCode }}" style="margin-right: 0.25em;">{{ or .Language.LanguageName .Language.Lang }}</a>
+          {{ end }}
+        </div>
+        {{- end }}
       </div>
       {{- end }}
     </header>
