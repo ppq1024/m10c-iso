@@ -15,7 +15,7 @@
     gitalk.render('gitalk-container');
   }
 </script>
-{{ $style := resources.Get "css/gitalk.scss" | resources.ExecuteAsTemplate "css/gitalk.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint -}}
+{{ $style := resources.Get "css/gitalk.scss" | resources.ExecuteAsTemplate "css/gitalk.scss" . | css.Sass | resources.Minify | resources.Fingerprint -}}
 <link rel="stylesheet" href="https://unpkg.com/gitalk@1.8.0/dist/gitalk.css">
 <link rel="stylesheet" href="{{ $style.Permalink }}">
 {{ end }}
