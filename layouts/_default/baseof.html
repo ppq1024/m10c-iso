@@ -39,7 +39,7 @@
   </head>
   <body>
     <header class="app-header">
-      <a href="{{ "" | relURL }}"><img class="app-header-avatar" src="{{ .Site.Params.avatar | default "avatar.jpg" | relURL }}" alt="{{ .Site.Params.author | default "John Doe" }}" /></a>
+      <a href="{{ "" | relLangURL }}"><img class="app-header-avatar" src="{{ .Site.Params.avatar | default "avatar.jpg" | relURL }}" alt="{{ .Site.Params.author | default "John Doe" }}" /></a>
       <span class="app-header-title">{{ .Site.Params.author }}</span>
       {{- with .Site.Menus.main }}
       <nav class="app-header-menu">
