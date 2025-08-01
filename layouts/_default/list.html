@@ -1,7 +1,7 @@
 {{ define "main" }}
   <article>
     <div class="content-titlebar">
-      <h1 class="content-title">{{ .Title }}</h1>
+      <h1 class="content-title">{{ i18n .Title | default .Title }}</h1>
       {{ partial "languages.html" $ }}
     </div>
     </div>
