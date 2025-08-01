@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ .Site.LanguageCode | default "en-us" }}">
   <head>
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} // {{ .Site.Title }}{{ end }}</title>
+    <title>{{ if .IsHome }}{{ i18n .Site.Title }}{{ else }}{{ .Title }} // {{ i18n .Site.Title }}{{ end }}</title>
     <link rel="shortcut icon" href="{{ .Site.Params.favicon | default "/favicon.ico" }}" />
     <meta charset="utf-8" />
     {{ hugo.Generator }}
@@ -40,18 +40,18 @@
   <body>
     <header class="app-header">
       <a href="{{ "" | relLangURL }}"><img class="app-header-avatar" src="{{ .Site.Params.avatar | default "avatar.jpg" | relURL }}" alt="{{ .Site.Params.author | default "John Doe" }}" /></a>
-      <span class="app-header-title">{{ .Site.Params.author }}</span>
+      <span class="app-header-title">{{ i18n .Site.Params.author }}</span>
       {{- with .Site.Menus.main }}
       <nav class="app-header-menu">
         {{- range $key, $item := . }}
           {{- if ne $key 0 }}
             {{ $.Site.Params.menu_item_separator | default " - " | safeHTML }}
           {{ end }}
-          <a class="app-header-menu-item" href="{{ $item.URL }}">{{ $item.Name }}</a>
+          <a class="app-header-menu-item" href="{{ $item.URL | relLangURL }}">{{ i18n $item.Name | default $item.Name }}</a>
         {{- end }}
       </nav>
       {{- end }}
-      <p>{{ .Site.Params.description | default "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium." }}</p>
+      <p>{{ i18n .Site.Params.description | default "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium." }}</p>
       {{- with .Site.Params.social }}
       <div class="app-header-social">
         {{ range . }}
