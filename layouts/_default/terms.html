@@ -6,7 +6,18 @@
     </div>
     <ul class="tags-list">
       {{ range .Data.Terms.ByCount }}
-        {{ $valid := where .Pages "Params.expire" "ge" now | union (where .Pages "Params.expire" "eq" nil) }}
+        {{ $valid := slice }}
+        {{ range .Pages }}
+          {{ $exp := .Params.expire }}
+          {{ if not $exp }}
+            {{ $valid = $valid | append . }}
+          {{ else }}
+            {{ $expTime := $exp | time.AsTime }}
+            {{ if time.Now.Before $expTime }}
+              {{ $valid = $valid | append . }}
+            {{ end }}
+          {{ end }}
+        {{ end }}
         {{ if gt (len $valid) 0 }}
           <li class="tags-list-item">
             {{ partial "icon.html" (dict "ctx" $ "name" "tag") }}
