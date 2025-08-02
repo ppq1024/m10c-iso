@@ -6,13 +6,16 @@
     </div>
     <ul class="tags-list">
       {{ range .Data.Terms.ByCount }}
-        <li class="tags-list-item">
+        {{ $valid := where .Pages "Params.expire" "ge" now | union (where .Pages "Params.expire" "eq" nil) }}
+        {{ if gt (len $valid) 0 }}
+          <li class="tags-list-item">
             {{ partial "icon.html" (dict "ctx" $ "name" "tag") }}
             <a class="tags-list-item-title" href="{{ .Page.RelPermalink }}">
-              ({{ .Count }})
+              ({{ len $valid }})
               {{ .Page.Title }}
             </a>
-        </li>
+          </li>
+        {{ end }}
       {{ end }}
     </ul>
   </article>
