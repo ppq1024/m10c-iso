@@ -6,9 +6,10 @@
     </div>
     </div>
     <ul class="posts-list">
-      {{ range where .Paginator.Pages "Type" "!=" "page" }}
-        {{ $expire := .Params.expire | time.AsTime }}
-        {{ if  or (not $expire) (time.Now.Before $expire) }}
+      {{ $pages := cond (.IsHome) .Site.RegularPages .RegularPages }}
+      {{ $pages = where $pages "Type" "posts" }}
+      {{ $paginator := .Paginate $pages }}
+      {{ range .Paginator.Pages }}
         <li class="posts-list-item">
           <a class="posts-list-item-title" href="{{ .RelPermalink }}">{{ .Title }}</a>
           <div class="posts-list-item-description">
@@ -25,7 +26,6 @@
             {{- end }}
           </div>
         </li>
-        {{ end }}
       {{ end }}
     </ul>
     {{ partial "pagination.html" $ }}

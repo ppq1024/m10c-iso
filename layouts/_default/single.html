@@ -11,10 +11,10 @@
           {{ partial "icon.html" (dict "ctx" $ "name" "calendar") }}
           {{ .PublishDate.Format "2006/01/02" }}
         </div>
-        {{ if .Params.update }}
+        {{ if .Params.Lastmod }}
         <div>
           {{ partial "icon.html" (dict "ctx" $ "name" "refresh-cw") }}
-          {{ (time .Params.update).Format "2006/01/02" }}
+          {{ (time .Params.Lastmod).Format "2006/01/02" }}
         </div>
         {{ end }}
         {{- with .Params.tags }}
