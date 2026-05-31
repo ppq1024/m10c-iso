@@ -1,0 +1,16 @@
+
+{{ if .Page.Params.enableMermaid | default false }}
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({
+    startOnLoad: true,
+    look: 'handDrawn',
+    theme: 'dark'
+  });
+  Array.from(document.getElementsByClassName("language-mermaid")).forEach(
+    (el) => {
+      el.parentElement.outerHTML = `<div class="mermaid">${el.innerHTML}</div>`;
+    }
+  );
+</script>
+{{ end }}
